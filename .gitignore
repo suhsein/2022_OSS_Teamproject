@@ -3,3 +3,4 @@ package.json
 .husky
 node_modules
 .eslintrc.js
+token
