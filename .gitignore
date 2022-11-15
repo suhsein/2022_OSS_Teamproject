@@ -1,6 +1,6 @@
-node_modules
-.husky
 package-lock.json
 package.json
+.husky
+node_modules
 .eslintrc.js
 token
