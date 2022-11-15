@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-
+    - uses: @slack/rtm-api dotenv
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -24,7 +24,6 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install mocha -g
-        npm install @slack/rtm-api dotenv
         mocha test.spec.js
       env:
         CI: true
