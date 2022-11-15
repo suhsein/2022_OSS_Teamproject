@@ -1,0 +1,35 @@
+{
+  "name": "2022_oss_teamproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyein0229/2022_OSS_Teamproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyein0229/2022_OSS_Teamproject/issues"
+  },
+  "homepage": "https://github.com/hyein0229/2022_OSS_Teamproject#readme",
+  "dependencies": {
+    "@slack/rtm-api": "^6.0.0",
+    "dotenv": "^16.0.3",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
+  }
+}
