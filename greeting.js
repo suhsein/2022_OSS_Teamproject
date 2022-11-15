@@ -9,4 +9,5 @@ const greeting = function (rtm, channel) {
     return Promise.resolve('error');
   }
 };
+
 module.exports = greeting;
