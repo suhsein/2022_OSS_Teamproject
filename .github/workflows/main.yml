@@ -23,6 +23,8 @@ jobs:
 
     - name: npm install, build, and test
       run: |
+        npm install dotenv
+        npm install @slack/rtm-api
         npm install mocha -g
         mocha test.spec.js
       env:
