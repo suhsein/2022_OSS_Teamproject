@@ -1,4 +1,5 @@
 package-lock.json
+package.json
 .husky
 node_modules
 .eslintrc.js
