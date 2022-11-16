@@ -9,6 +9,7 @@ try {
 } catch (err) {
   console.error(err);
 }
+/* 토큰 분리 */
 
 console.log(token);
 
@@ -17,6 +18,7 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
+const Office = require('./Office');
 
 rtm.on('message', (message) => {
   const { channel } = message;
