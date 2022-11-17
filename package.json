@@ -2,7 +2,8 @@
   "dependencies": {
     "@slack/rtm-api": "^6.0.0",
     "dotenv": "^16.0.3",
-    "husky": "^8.0.2"
+    "husky": "^8.0.2",
+    "eslint": "^8.2.0"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
@@ -15,5 +16,22 @@
   },
   "scripts": {
     "prepare": "husky install"
+  },
+  "name": "2022_oss_teamproject",
+  "description": "해당 README는 Chatbot을 편리하게 사용할 수 있게 제작되었습니다.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jinnyzinny/2022_OSS_Teamproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jinnyzinny/2022_OSS_Teamproject/issues"
+  },
+  "homepage": "https://github.com/Jinnyzinny/2022_OSS_Teamproject#readme",
+  "husky":{
+    "hooks": "pre-commit"
   }
 }
