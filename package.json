@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyein0229/2022_OSS_Teamproject.git"
+    "url": "git+https://github.com/suhsein/2022_OSS_Teamproject.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hyein0229/2022_OSS_Teamproject/issues"
+    "url": "https://github.com/suhsein/2022_OSS_Teamproject/issues"
   },
-  "homepage": "https://github.com/hyein0229/2022_OSS_Teamproject#readme",
+  "homepage": "https://github.com/suhsein/2022_OSS_Teamproject#readme",
   "dependencies": {
     "@slack/rtm-api": "^6.0.0",
     "dotenv": "^16.0.3",
