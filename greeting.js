@@ -3,3 +3,4 @@ const greeting = function (rtm, channel) {
   rtm.sendMessage('Hello!', channel);
 };
 module.exports = greeting;
+// 임시 주석 추가
