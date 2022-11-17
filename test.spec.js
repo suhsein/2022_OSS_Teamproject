@@ -18,6 +18,11 @@ console.log(token);
 
 const rtm = new RTMClient(token);
 
+(async () => {
+  await rtm.start()
+    .catch(console.error);
+})();
+
 const assert = require('assert');
 const greeting = require('./greeting');
 
