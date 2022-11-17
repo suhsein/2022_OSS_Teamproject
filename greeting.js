@@ -1,4 +1,5 @@
 const greeting = function (rtm, channel) {
+<<<<<<< HEAD
   console.log('인사를 합니다.');
   // 인사를 합시다가 아니라 인사를 합니다라고 변경해야 실 사용자들이 불편하지 않을 거 같다
   const randomnum = Math.floor(Math.random() * 3);
@@ -16,4 +17,9 @@ const greeting = function (rtm, channel) {
   */
 };
 
+=======
+  console.log('인사를 합시다.');
+  rtm.sendMessage('Hello!', channel);
+};
+>>>>>>> e0710f825222ab21a5531c26965f7bc9d0479ca7
 module.exports = greeting;

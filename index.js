@@ -1,16 +1,25 @@
 require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
+<<<<<<< HEAD
 
 let token;
 const fs = require('fs');
+=======
+const fs = require('fs');
+
+let token;
+>>>>>>> e0710f825222ab21a5531c26965f7bc9d0479ca7
 
 try {
   token = fs.readFileSync('./token').toString('utf-8');
 } catch (err) {
   console.error(err);
 }
+<<<<<<< HEAD
 /* 토큰 분리 */
+=======
+>>>>>>> e0710f825222ab21a5531c26965f7bc9d0479ca7
 
 console.log(token);
 
@@ -19,16 +28,20 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
+<<<<<<< HEAD
 const Office = require('./Office');
 const Schedule = require('./Schedule');
 /*
   Office 추가
   */
+=======
+>>>>>>> e0710f825222ab21a5531c26965f7bc9d0479ca7
 
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
+<<<<<<< HEAD
   if (text === null) {
     square(rtm, text, channel);
   } else {
@@ -44,6 +57,15 @@ rtm.on('message', (message) => {
       // # 마지막에 부로 끝나는 학과나 과로 끝나는 학과 두 가지가 있으므로 주의한다.
         Office(rtm, text, channel);
         break;
+=======
+  if (!Number.isNaN(text)) {
+    square(rtm, text, channel);
+  } else {
+    switch (text) {
+      case 'hi':
+        greeting(rtm, channel);
+        break;
+>>>>>>> e0710f825222ab21a5531c26965f7bc9d0479ca7
       default:
         rtm.sendMessage('I`m alive', channel);
     }
