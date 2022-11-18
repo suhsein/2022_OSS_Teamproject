@@ -26,7 +26,7 @@ jobs:
     - name: npm install, build, and test
       env:
         CI: true
-        TOKEN: ${{ secrets.BOT_TOKEN }}
+        TOKEN: "${{ secrets.BOT_TOKEN }}"
     
       run: |
         npm install @slack/rtm-api dotenv
