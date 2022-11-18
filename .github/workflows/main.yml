@@ -22,12 +22,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+        bot_token: ${{ secrets.BOT_TOKEN }}
 
     - name: npm install, build, and test
       run: |
         npm install @slack/rtm-api dotenv
         npm install mocha -g
-        echo "${{ secrets.BOT_TOKEN }}" > token
+        echo bot_token > token
         cat token
         mocha test.spec.js
       env:
