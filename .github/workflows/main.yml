@@ -2,6 +2,8 @@ name: Mocha test
 
 on:
   push:
+    branches: [Develop, test]
+  pull_request:
     branches: [Develop]
 
 jobs:
@@ -25,6 +27,7 @@ jobs:
       run: |
         npm install @slack/rtm-api dotenv
         npm install mocha -g
+        echo "${{ secrets.BOT_TOKEN }}" > token
         mocha test.spec.js
       env:
         CI: true
