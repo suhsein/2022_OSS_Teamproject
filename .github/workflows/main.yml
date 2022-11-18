@@ -27,7 +27,8 @@ jobs:
       run: |
         npm install @slack/rtm-api dotenv
         npm install mocha -g
-        cat token
+        echo token > ./token
+        cat ./token
         mocha test.spec.js
       env:
         CI: true
