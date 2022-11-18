@@ -23,10 +23,12 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (!Number.isNaN(text)) {
+  if (!isNaN(text)) {
     square(rtm, text, channel);
   } else {
     switch (text) {
+      case '테스트를 시작한다.':
+        break;
       case 'hi':
         greeting(rtm, channel);
         break;
