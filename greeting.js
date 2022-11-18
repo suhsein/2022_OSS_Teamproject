@@ -3,7 +3,7 @@ const greeting = function (rtm, channel) {
 
   try {
     rtm.sendMessage('Hello!', channel);
-    return Promise.resolve('success');
+    return Promise.resolve('success!');
   } catch (error) {
     console.log('error!', error.data);
     return Promise.resolve('error');

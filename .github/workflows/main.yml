@@ -3,6 +3,8 @@ name: Mocha test
 on:
   push:
     branches: [Develop]
+  pull_request:
+    branches: [Develop]
 
 jobs:
   build:
@@ -23,8 +25,7 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install dotenv
-        npm install @slack/rtm-api
+        npm install @slack/rtm-api dotenv
         npm install mocha -g
         mocha test.spec.js
       env:
