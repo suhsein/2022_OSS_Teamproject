@@ -2,7 +2,7 @@ name: Mocha test
 
 on:
   push:
-    branches: [Develop]
+    branches: [Develop, test]
   pull_request:
     branches: [Develop]
 
