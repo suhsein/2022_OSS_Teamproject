@@ -24,12 +24,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: npm install, build, and test
+      env:
+        CI: true
+        TOKEN: ${{ secrets.BOT_TOKEN }}
+    
       run: |
         npm install @slack/rtm-api dotenv
         npm install mocha -g
-        echo env.token > ./token
+        echo env.TOKEN > ./token
         cat ./token
         mocha test.spec.js
-      env:
-        CI: true
-        token: ${{ secrets.BOT_TOKEN }}
