@@ -1,6 +1,5 @@
 const greeting = function (rtm, channel) {
   console.log('인사를 합시다.');
-
   try {
     rtm.sendMessage('Hello!', channel);
     return Promise.resolve('success');
@@ -9,5 +8,5 @@ const greeting = function (rtm, channel) {
     return Promise.resolve('error');
   }
 };
-
 module.exports = greeting;
+// 임시 주석 추가
