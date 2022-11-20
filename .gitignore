@@ -3,3 +3,4 @@ package.json
 .husky
 token
 node_modules
+.gitmessage.txt
