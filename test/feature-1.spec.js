@@ -28,7 +28,7 @@ let res;
 /* eslint no-loop-func: 0 */
 describe('랜덤 인사 모듈 테스트', () => {
   beforeEach(async () => res = await greeting(rtm, channel));
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 7; i += 1) {
     it('Test - greeting() should return 3 random greeting pattern', (done) => {
       if (res === '1번 패턴 인사 성공' || res === '2번 패턴 인사 성공' || res === '3번 패턴 인사 성공') {
         console.log(res);
