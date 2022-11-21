@@ -8,7 +8,7 @@ let status = 0;
 let token;
 
 try {
-  token = fs.readFileSync('./test_token').toString('utf-8');
+  token = fs.readFileSync('./testbot_token').toString('utf-8');
 } catch (err) {
   console.error(err);
 }
@@ -28,6 +28,7 @@ rtm.on('ready', async () => {
   status++;
 
   const rdy2 = await rtm.sendMessage('hi', test_channel);
+  console.log('랜덤 인사 테스트 시작');
 });
 
 rtm.on('message', (message) => {
@@ -39,20 +40,27 @@ rtm.on('message', (message) => {
     switch (status) {
       case 1:
         if (text == 'Hello!') {
-          console.log('테스트 #1 성공');
+          console.log('랜덤 인사 테스트 성공');
         } else {
-          console.log('테스트 #1 실패');
+          console.log('랜덤 인사 테스트 실패');
           process.exit(1);
         }
-        rtm.sendMessage('4', test_channel);
+        rtm.sendMessage('학사일정', test_channel);
         status++;
-        console.log('테스트 #2 시작');
+        console.log('학사일정 안내 테스트 시작');
         break;
       case 2:
-        if (text == 'The result is 16') {
-          console.log('테스트 #2 성공');
+        if (text == '안내 받을 날짜를 이야기해주세요. (예, 12/21)') {
+          console.log('날짜 입력하라는 메세지 보내기 테스트 성공');
         } else {
-          console.log('테스트 #2 실패');
+          console.log('날짜 입력하라는 메세지 보내기 테스트 실패');
+          process.exit(1);
+        }
+        rtm.sendMessage('9/1', test_channel);
+        if(text == '9/1은 2학기 개강, 2학기 수강신청 변경 기간 입니다.'){
+          console.log('해당 날짜의 학사일정 안내 테스트 성공');
+        }else{
+          console.log('해당 날짜의 학사일정 안내 테스트 실패');
           process.exit(1);
         }
     }

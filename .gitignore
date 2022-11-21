@@ -4,3 +4,4 @@ package.json
 token
 node_modules
 test_token
+private_token
