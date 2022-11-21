@@ -29,15 +29,14 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (text === null) {
+  if (!isNaN(text)) {
     square(rtm, text, channel);
   } else {
     switch (text) {
       case 'hi': // # feature 1번 기능이다. 이 부분의 구현은 greeting.js에 구현을 한다.
         greeting(rtm, channel);
         break;
-      // Feature 4번의 Case이다. 일렬로 정의했다.
-      case 'Architectural Engineering':
+      case 'Architectural Engineering':// Feature 4번의 영문 Case이다. 일렬로 정의했다.
       case 'Mechanical Engineering':
       case 'Urban Engineering':
       case 'Electronic Engineering':

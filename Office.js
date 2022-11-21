@@ -4,33 +4,42 @@ const Office = function (rtm, text, channel) {
 
   switch (text) {
     case 'Architectural Engineering':
+    case '건축공학과':
       rtm.sendMessage('공대 1호관 132호입니다(College of Engineering Building 1, 132)', channel);
       break;
     case 'Mechanical Engineering':
+    case '기계공학과':
       rtm.sendMessage('공대 4호관 212호입니다(College of Engineering Building 4, 212)', channel);
       break;
     case 'Urban Engineering':
+    case '도시공학과':
       rtm.sendMessage('공대 9호관 917호입니다(College of Engineering Building 9, 917)', channel);
       break;
     case 'Electronic Engineering':
       rtm.sendMessage('공대 7호관 224호입니다(College of Engineering Building 7, 224)', channel);
       break;
     case 'Computer Science and Engineering':
+    case '컴퓨터공학부':
       rtm.sendMessage('공대 7호관 224호입니다(College of Engineering Building 7, 224)', channel);
       break;
     case 'Chemical Engineering':
+    case '화학공학부':
       rtm.sendMessage('공대 6호관 999호입니다(College of Engineering Building 6, 999)', channel);
       break;
     case 'Accounting':
+    case '회계학과':
       rtm.sendMessage('공대 2호관 9999호입니다(College of Commerce 2, 9999)', channel);
       break;
     case 'International Trade':
+    case '무역학과':
       rtm.sendMessage('상대 1호관 9999호입니다(College of Commerce 1, 9999)', channel);
       break;
     case 'Korean Language and Literature':
+    case '국어국문학과':
       rtm.sendMessage('인문대 320호입니다(College of Humanities, 320)', channel);
       break;
     case 'Library and Information Science':
+    case '문헌정보학과':
       rtm.sendMessage('인문대 427호입니다(College of Humanities, 427)', channel);
       break;
     default:
