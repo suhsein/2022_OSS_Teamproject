@@ -19,7 +19,7 @@ console.log(token);
 const rtm = new RTMClient(token);
 rtm.start();
 
-const greeting = require('./greeting');
+const greeting = require('../greeting');
 
 let res;
 
