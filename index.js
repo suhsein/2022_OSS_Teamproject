@@ -2,9 +2,6 @@ require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
 const fs = require('fs');
-/*
-  webScarping에 필요한 module을 load한다.
-*/
 
 let token;
 
