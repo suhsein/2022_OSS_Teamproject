@@ -3,8 +3,6 @@ name: feature1 mocha test
 on:
   pull_request:
     branches: [Develop]
-  pull_request:
-    branches: [Develop]
 
 jobs:
   build:
