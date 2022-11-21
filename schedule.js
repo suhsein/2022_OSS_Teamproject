@@ -61,4 +61,5 @@ const schedule = function (rtm, state, text, channel) {
   rtm.sendMessage('[학사일정] 을 입력하시오.', channel);
   return Promise.resolve('학사일정 안내 실패');
 };
+
 module.exports = schedule;
