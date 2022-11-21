@@ -44,14 +44,14 @@ describe('전북대 학사일정 안내 모듈 테스트', () => {
   });
 
   describe('해당 날의 학사일정이 없는 경우 예외처리 테스트', () => {
-    before(async () => res1 = await schedule(rtm, 1, '4/31', channel));
+    before(async () => res1 = await schedule(rtm, 1, '11/2', channel));
     it('Test - 해당 날짜에 학사일정이 없을 시 예외 처리', (done) => {
       assert.equal(res1, '학사일정 없음');
       done();
     });
   });
 
-  describe('학사일정 안내 실패 테스트', () => {
+  describe('학사일정을 입력하지 않았을 때 안내 실패 테스트', () => {
     before(async () => res1 = await schedule(rtm, 0, '10/15', channel));
     it('Test - 학사일정을 먼저 입력하지 않고 날짜를 입력하였을 때 안내 실패', (done) => {
       assert.equal(res1, '학사일정 안내 실패');
