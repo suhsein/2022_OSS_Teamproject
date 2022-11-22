@@ -23,7 +23,7 @@ rtm.start();
 /* eslint import/no-unresolved: ["off"] */
 /* eslint import/extensions: ["off"] */
 const assert = require('assert');
-const schedule = require('./schedule');
+const schedule = require('../schedule');
 
 let res1;
 let res2;
