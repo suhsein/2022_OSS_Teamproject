@@ -24,7 +24,6 @@ rtm.on('message', (message) => {
   const { text } = message;
 
   /* eslint no-restricted-globals: ["off"] */
-
   if (!isNaN(text)) {
     square(rtm, text, channel);
   } else {
