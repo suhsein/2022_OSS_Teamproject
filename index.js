@@ -49,6 +49,7 @@ rtm.on('message', (message) => {
   if (!isNaN(text)) {
     square(rtm, text, channel);
     state = 0;
+
   } else if (state === 0 && dateRegex.test(text)) {
     // 날짜 양식과 부합하나(존재하지 않는 날짜 포함) 학사일정을 먼저 입력하지 않은 경우
     schedule(rtm, state, text, channel, scheduledict);
