@@ -2,4 +2,7 @@ package-lock.json
 package.json
 .husky
 token
-node_modules
+testbot_token
+node_modules/
+.gitmessage.txt
+haksa.txt
