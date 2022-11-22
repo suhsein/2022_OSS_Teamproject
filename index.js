@@ -18,6 +18,7 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
+const haksaguide = require('./haksaguide');
 
 rtm.on('message', (message) => {
   const { channel } = message;
