@@ -1,22 +1,7 @@
 /* eslint no-unused-vars: off */
 const dateRegex = /\d{1,2}\/\d{1,2}/; // 월/일
 
-function dateExist(text) {
-  const m1 = [1, 3, 5, 7, 8, 10, 12];
-  const m2 = [4, 6, 9, 11];
-
-  const month = Number(text.split('/')[0]);
-  const day = Number(text.split('/')[1]);
-
-  if (m1.includes(month) && day >= 1 && day <= 31) {
-    return true;
-  } if (m2.includes(month) && day >= 1 && day <= 30) {
-    return true;
-  } if (month === 2 && day >= 1 && day <= 29) {
-    return true;
-  }
-  return false;
-}
+const checkDate = require('./checkDate');
 
 const schedule = function (rtm, text, channel, scheduledict) {
   if (text === '학사일정') {
@@ -25,7 +10,7 @@ const schedule = function (rtm, text, channel, scheduledict) {
     return Promise.resolve('안내 메세지 출력');
   }
 
-  if (dateRegex.test(text) && dateExist(text)) { //  날짜양식과 존재하는 날짜인지 체크
+  if (dateRegex.test(text) && checkDate(text)) { //  날짜양식과 존재하는 날짜인지 체크
     if (text in scheduledict) { // 딕셔너리에 있는 날짜라면 해당 날의 학사일정 안내
       let schedules = '';
       [].forEach.call(scheduledict[text], (sche) => {
