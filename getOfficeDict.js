@@ -1,4 +1,4 @@
-const MakeDict = function () {
+const getOfficeDict = function () {
   const dict = {};
   let dept;
 
@@ -17,4 +17,4 @@ const MakeDict = function () {
 
   return dict;
 };
-module.exports = MakeDict;
+module.exports = getOfficeDict;
