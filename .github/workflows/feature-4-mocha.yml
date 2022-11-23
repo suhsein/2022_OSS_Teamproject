@@ -1,0 +1,30 @@
+name: feature-4 mocha test
+
+on:
+  pull_request:
+    branches: [Develop]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: npm install, build, and test
+      run: |
+        npm install @slack/rtm-api dotenv
+        npm install mocha -g
+        mocha test/feature-4.spec.js
+      env:
+        CI: true
