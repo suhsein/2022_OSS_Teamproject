@@ -27,13 +27,13 @@ let res;
 
 /* eslint no-loop-func: 0 */
 describe('랜덤 인사 모듈 테스트', () => {
-  beforeEach(async () => res = await greeting(rtm, channel));
-  for (let i = 0; i < 7; i += 1) {
-    it('Test - greeting() should return 3 random greeting pattern', (done) => {
-      if (res === '1번 패턴 인사 성공' || res === '2번 패턴 인사 성공' || res === '3번 패턴 인사 성공') {
-        console.log(res);
-        done();
-      }
+  function randomTest(x) {
+    it(`Test - 난수 생성 시 ${x}이 나왔을 때 ${x+1}번 인사 패턴 출력`, function() {
+      assert.equal(greeting(rtm, channel, x), `${x+1}번 패턴 인사 성공`);
     });
+  }
+
+  for (let x = 0; x <= 2; x++) {
+    randomTest(x);
   }
 });
