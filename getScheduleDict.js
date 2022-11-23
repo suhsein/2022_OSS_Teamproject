@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const getschedule = function () {
+const getScheduleDict = function () {
   const dict = {};
   let haksa;
 
@@ -20,7 +20,6 @@ const getschedule = function () {
       const endDate = Date[1].trim().split('/');
       // 만약 학사일정이 날짜가 아닌 기간으로 되어있는 경우, 시작 날짜와 종료 날짜.
       // 주어진 haksa.txt는 기간이 같은 달에 걸쳐있으므로 시작 월, 종료 월을 따로 나누지 않음.
-
       const month = parseInt(startDate[0], 10);
       let sDay = parseInt(startDate[1], 10);
       const eDay = parseInt(endDate[1], 10);
@@ -44,4 +43,4 @@ const getschedule = function () {
   return dict;
 };
 
-module.exports = getschedule;
+module.exports = getScheduleDict;
