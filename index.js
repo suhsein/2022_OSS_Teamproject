@@ -25,6 +25,9 @@ const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너�
 let state = 0;
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
 
+/* eslint no-restricted-globals: ["off"] */
+// isNaN 오류 예외처리
+
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
@@ -39,6 +42,7 @@ rtm.on('message', (message) => {
       case '테스트를 시작한다.':
         break;
       case 'hi':
+      case 'Hi':
         greeting(rtm, channel);
         break;
       case '학사일정':

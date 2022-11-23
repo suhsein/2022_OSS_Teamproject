@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     // 'no-undef': 'off',
     'no-return-assign': 'off',
+    'no-unused-vars': 'off', // 사용되지 않은 변수
   },
 };
