@@ -22,8 +22,6 @@ const square = require('./square');
 /* eslint no-restricted-globals: ["off"] */
 // isNaN 오류 예외처리
 
-let rand;
-
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
@@ -35,8 +33,7 @@ rtm.on('message', (message) => {
       // feature 1
       case 'hi':
       case 'Hi':
-        rand = Math.floor(Math.random() * 3); // 난수 생성
-        greeting(rtm, channel, rand);
+        greeting(rtm, channel);
         break;
       default:
         rtm.sendMessage('I`m alive', channel);
