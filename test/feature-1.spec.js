@@ -21,9 +21,8 @@ console.log(token);
 const rtm = new RTMClient(token);
 rtm.start();
 
+const assert = require('assert');
 const greeting = require('../greeting');
-
-let res;
 
 /* eslint no-loop-func: 0 */
 describe('랜덤 인사 모듈 테스트', () => {
