@@ -1,6 +1,5 @@
 const greeting = function (rtm, channel, rand) {
   console.log('인사를 합시다.');
-
   const greetings = ['Hello!', 'Nice to meet you.', 'Have a good day!']; // 랜덤으로 나오는 인사말
 
   try {
@@ -11,5 +10,4 @@ const greeting = function (rtm, channel, rand) {
     return Promise.resolve('error');
   }
 };
-
 module.exports = greeting;

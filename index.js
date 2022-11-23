@@ -5,11 +5,13 @@ const fs = require('fs');
 
 let token;
 
+// 이 위가 웹 스크래핑 하는 코드이다.
 try {
   token = fs.readFileSync('./token').toString('utf-8');
 } catch (err) {
   console.error(err);
 }
+/* 토큰 분리 */
 
 console.log(token);
 
@@ -18,12 +20,15 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
+const Office = require('./Office');
 const schedule = require('./schedule'); // 학사일정 안내 모듈
+const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 
-/* eslint no-restricted-globals: 0 */
-let state = 0;
+const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
+
+let state = 0;
 
 /* eslint no-restricted-globals: ["off"] */
 // isNaN 오류 예외처리
@@ -39,6 +44,8 @@ rtm.on('message', (message) => {
     state = 0; // 상태 초기화
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
+  } else if (text in officeDict) {
+    Office(rtm, text, channel, officeDict);
   } else {
     switch (text) {
       case '테스트를 시작한다.':
