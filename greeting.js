@@ -5,7 +5,7 @@ const greeting = function (rtm, channel, rand) {
 
   try {
     rtm.sendMessage(greetings[rand], channel);
-    return Promise.resolve(`${rand + 1}번 패턴 인사 성공`);
+    return `${rand + 1}번 패턴 인사 성공`;
   } catch (error) {
     console.log('error!', error.data);
     return Promise.resolve('error');
