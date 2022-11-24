@@ -34,18 +34,21 @@ let state = 0;
 // isNaN 오류 예외처리
 
 let rand;
+const spaceRegex = / /gi;
 
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
+  const dept = text.replace(spaceRegex, '').toLowerCase();
+  // feature4 대소문자, 공백에 상관 없이 학과사무실 정보를 알려주도록 함
 
   if (state === 1) { // 학사일정을 입력한 상태면 학사일정 안내 모듈 실행
     schedule(rtm, text, channel, scheduledict);
     state = 0; // 상태 초기화
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
-  } else if (text in officeDict) {
-    Office(rtm, text, channel, officeDict);
+  } else if (dept in officeDict) {
+    Office(rtm, dept, channel, officeDict);
   } else {
     switch (text) {
       case '테스트를 시작한다.':
