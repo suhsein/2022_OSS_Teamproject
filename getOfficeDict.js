@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const getOfficeDict = function () {
   const dict = {};
   let dept;

@@ -60,7 +60,7 @@ rtm.on('message', (message) => {
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
         break;
       default:
-        rtm.sendMessage('"hi" "학사일정" "오늘 밥 뭐야" 를 입력하거나 "학과이름을 영어로" 입력하시오', channel);
+        rtm.sendMessage('"hi" "학사일정" "오늘 밥 뭐야" 를 입력하거나 "학과이름을 영어로" 입력하세요!', channel);
     }
   }
 });

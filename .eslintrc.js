@@ -15,4 +15,5 @@ module.exports = {
     'no-return-assign': 'off',
     'no-restricted-globals': 'off',
     'no-unused-vars': 'off', // 사용되지 않은 변수
+  },
 };
