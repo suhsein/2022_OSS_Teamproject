@@ -7,7 +7,7 @@ const schedule = function (rtm, text, channel, scheduledict) {
   if (text === '학사일정') {
     console.log('학사일정을 안내합니다.');
     rtm.sendMessage('안내 받을 날짜를 이야기해주세요. (예, 12/21)', channel);
-    return Promise.resolve('안내 메세지 출력');
+    return '안내 메세지 출력';
   }
 
   if (dateRegex.test(text) && checkDate(text)) { //  날짜양식과 존재하는 날짜인지 체크

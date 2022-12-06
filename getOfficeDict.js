@@ -11,8 +11,11 @@ const getOfficeDict = function () {
   }
 
   dept.forEach((element) => {
-    const D = element.split('-').at(0).trim(); // hypen 기준으로 split.
+    const spaceRegex = / /gi;
+    let D = element.split('-').at(0); // hypen 기준으로 split.
     const O = element.split('-').at(1).trim();
+
+    D = D.replace(spaceRegex, '').toLowerCase();
 
     dict[D] = O;
   });
