@@ -22,10 +22,8 @@ const greeting = require('./greeting');
 const square = require('./square');
 const Office = require('./Office');
 const schedule = require('./schedule'); // 학사일정 안내 모듈
-const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 
-const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
 
 let state = 0;
@@ -34,21 +32,19 @@ let state = 0;
 // isNaN 오류 예외처리
 
 let rand;
-const spaceRegex = / /gi;
 
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
-  const dept = text.replace(spaceRegex, '').toLowerCase();
-  // feature4 대소문자, 공백에 상관 없이 학과사무실 정보를 알려주도록 함
 
   if (state === 1) { // 학사일정을 입력한 상태면 학사일정 안내 모듈 실행
     schedule(rtm, text, channel, scheduledict);
-    state = 0; // 상태 초기화
+    state = 0;
+  } else if (state === 4) {
+    Office(rtm, text, channel);
+    state = 0;
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
-  } else if (dept in officeDict) {
-    Office(rtm, dept, channel, officeDict);
   } else {
     switch (text) {
       case '테스트를 시작한다.':
@@ -59,11 +55,14 @@ rtm.on('message', (message) => {
         greeting(rtm, channel, rand);
         break;
       case '학사일정':
-        schedule(rtm, text, channel, scheduledict);
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
         break;
+      case '학과 안내':
+        Office(rtm, text, channel);
+        state = 4;
+        break;
       default:
-        rtm.sendMessage('"hi" "학사일정" "오늘 밥 뭐야" 를 입력하거나 "학과이름을 영어로" 입력하세요!', channel);
+        rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" 혹은 "학과 안내"를 입력하세요!', channel);
     }
   }
 });

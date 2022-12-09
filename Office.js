@@ -1,8 +1,18 @@
-const Office = function (rtm, text, channel, dict) {
-  console.log('학과 사무실을 안내합니다.');
+const Comparestring = require('./Comparestring');
 
-  rtm.sendMessage(dict[text], channel);
-  return dict[text];
+const Office = function (rtm, text, channel) {
+  if (text === '학과 안내') {
+    console.log('안내받고 싶은 학과를 영문으로 입력하세요');
+    rtm.sendMessage('안내받고 싶은 학과를 영문으로 입력하세요', channel);
+    return Promise.resolve('안내 메세지 출력');
+  }
+
+  console.log('학과 사무실을 안내합니다.');
+  const feat4str = Comparestring(rtm, text, channel);
+
+  // rtm.sendMessage(rtm, `원하시는 학과가 ${feat4str} 인가요? 맞다면 y 틀리면 n을 입력해주세요`, channel);
+
+  return feat4str;
 };
 
 module.exports = Office;
