@@ -16,7 +16,6 @@ const rtm = new RTMClient(token);
 rtm.start();
 
 const assert = require('assert');
-const office = require('../Office');
 const Comparestring = require('../Comparestring');
 const spaceRegex = / /gi;
 
@@ -43,9 +42,10 @@ describe('전북대 학과 사무실 안내 모듈 테스트', () => {
     });
   }
 
-  for(wrong in wrongtestDict)
-  it('오탈자가 있는 경우', (done) => {
-    assert.equal(Comparestring(rtm, channel, wrong, lowertestDict, testDict), wrongtestDict[wrong]);
-    done();
-  })
+  for(wrong in wrongtestDict) {
+    it('오탈자가 있는 경우', (done) => {
+      assert.equal(Comparestring(rtm, channel, wrong, lowertestDict, testDict), wrongtestDict[wrong]);
+      done();
+    })
+  }
 });

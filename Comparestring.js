@@ -20,7 +20,8 @@ const Comparestring = function (rtm, channel, dept, officeDict, originalDict) {
     }
   }
   rtm.sendMessage(`${lowercase}학과를 찾으시나요? ${lowercase}의 학과사무실 위치는 ${Office(rtm, retstr, channel, officeDict)}입니다`, channel);
-  return Promise.resolve(Office(rtm, retstr, channel, officeDict));
+  console.log(`${lowercase}학과를 찾으시나요? ${lowercase}의 학과사무실 위치는 ${Office(rtm, retstr, channel, officeDict)}입니다`);
+  return Office(rtm, retstr, channel, officeDict);
 };
 
 module.exports = Comparestring;
