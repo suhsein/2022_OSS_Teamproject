@@ -4,12 +4,12 @@ const { RTMClient } = require('@slack/rtm-api');
 const { channel } = require('diagnostics_channel');
 
 const fs = require('fs');
-const Comparestring = require('./Comparestring');
-const getScheduleDict = require('./getScheduleDict');
+const Comparestring = require('./feature-4/Comparestring');
+const getScheduleDict = require('./feature-2/getScheduleDict');
 
 const scheduleDict = getScheduleDict();
-const greeting = require('./greeting');
-const schedule = require('./schedule');
+const greeting = require('./feature-1/greeting');
+const schedule = require('./feature-2/schedule');
 
 let status = 0;
 
