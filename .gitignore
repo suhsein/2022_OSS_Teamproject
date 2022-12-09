@@ -7,3 +7,4 @@ node_modules/
 .gitmessage.txt
 dept.txt
 haksa.txt
+!C:/Users/ddocd/AppData/Local/Microsoft/TypeScript/4.8/node_modules/@types/js-levenshtein/index
