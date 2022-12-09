@@ -18,15 +18,15 @@ console.log(token);
 const rtm = new RTMClient(token);
 rtm.start();
 const levenshtein = require('./js-levenshtein');
-const greeting = require('./greeting');
+const greeting = require('./feature-1/greeting');
 const square = require('./square');
-const Office = require('./Office');
-const schedule = require('./schedule'); // 학사일정 안내 모듈
-const getOfficeDict = require('./getOfficeDict');
-const OriginalOfficeDict = require('./OriginalOfficeDict');
+const Office = require('./feature-4/Office');
+const schedule = require('./feature-2/schedule'); // 학사일정 안내 모듈
+const getOfficeDict = require('./feature-4/getOfficeDict');
+const OriginalOfficeDict = require('./feature-4/OriginalOfficeDict');
 
-const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
-const Comparestring = require('./Comparestring');
+const getScheduleDict = require('./feature-2/getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
+const Comparestring = require('./feature-4/Comparestring');
 
 const originalDict = OriginalOfficeDict();
 const officeDict = getOfficeDict();
