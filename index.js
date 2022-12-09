@@ -17,7 +17,7 @@ console.log(token);
 
 const rtm = new RTMClient(token);
 rtm.start();
-const levenshtein = require('js-levenshtein');
+const levenshtein = require('./js-levenshtein');
 const greeting = require('./greeting');
 const square = require('./square');
 const Office = require('./Office');

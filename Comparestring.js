@@ -1,4 +1,4 @@
-const levenshtein = require('js-levenshtein');
+const levenshtein = require('./js-levenshtein');
 const Office = require('./Office');
 
 const Comparestring = function (rtm, channel, dept, officeDict, originalDict) {
