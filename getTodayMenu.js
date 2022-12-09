@@ -11,7 +11,7 @@ async function webScraping(url, dayNum, selector) {
   for (const x of $(curDay).find('li')) {
     curText = $(x).text().trim().replace('\n', '');
     if (curText !== '') {
-      foods.push($(x).text());
+      foods.push(curText);
     }
   }
   return foods;

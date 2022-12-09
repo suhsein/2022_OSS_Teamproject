@@ -22,11 +22,13 @@ const greeting = require('./greeting');
 const square = require('./square');
 const Office = require('./Office');
 const schedule = require('./schedule'); // 학사일정 안내 모듈
+const getTodayMenu = require('./getTodayMenu');
 const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
+const now = new Date();
 
 let state = 0;
 
@@ -61,6 +63,10 @@ rtm.on('message', (message) => {
       case '학사일정':
         schedule(rtm, text, channel, scheduledict);
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
+        break;
+      case '오늘 밥 뭐야':
+        dayNum = now.getDay();
+        getTodayMenu(rtm, dayNum, channel);
         break;
       default:
         rtm.sendMessage('"hi" "학사일정" "오늘 밥 뭐야" 를 입력하거나 "학과이름을 영어로" 입력하세요!', channel);
