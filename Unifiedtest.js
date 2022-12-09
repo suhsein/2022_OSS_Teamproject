@@ -1,10 +1,15 @@
 require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
+const { channel } = require('diagnostics_channel');
 
 const fs = require('fs');
 const Comparestring = require('./Comparestring');
+const getScheduleDict = require('./getScheduleDict');
+
+const scheduleDict = getScheduleDict();
 const greeting = require('./greeting');
+const schedule = require('./schedule');
 
 let status = 0;
 
@@ -45,10 +50,16 @@ rtm.on('message', (message) => {
     }
   } // Feature/1
   status += 1; // Feature/2
-  status += 1;
-  if (status === 3) {
-
+  if (status === 2) {
+    if (text === '학사 일정') {
+      schedule(rtm, text, channel, scheduleDict);
+    } else if (text === '9/1') {
+      schedule(rtm, text, channel, scheduleDict);
+    } else if (text === '9/5') {
+      schedule(rtm, text, channel, scheduleDict);
+    }
   }
+  status += 1;
   status += 1;
   if (status === 4) {
     if (text === 'Computer Science and Engineering') {
