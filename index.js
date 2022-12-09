@@ -73,7 +73,7 @@ rtm.on('message', (message) => {
         getWeekMenu(rtm, channel);
         break;
       default:
-        rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" 혹은 "학과 안내"를 입력하세요!', channel);
+        rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" / "이번주 뭐 나와" 혹은 "학과 안내"를 입력하세요!', channel);
     }
   }
 });
