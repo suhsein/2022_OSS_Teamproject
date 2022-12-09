@@ -23,7 +23,7 @@ const rtm = new RTMClient(token);
 rtm.start();
 
 const assert = require('assert');
-const greeting = require('../greeting');
+const greeting = require('../feature-1/greeting');
 
 
 /* eslint no-loop-func: 0 */

@@ -16,7 +16,7 @@ const rtm = new RTMClient(token);
 rtm.start();
 
 const assert = require('assert');
-const Comparestring = require('../Comparestring');
+const Comparestring = require('../feature-4/Comparestring');
 const spaceRegex = / /gi;
 
 const lowertestDict = {
