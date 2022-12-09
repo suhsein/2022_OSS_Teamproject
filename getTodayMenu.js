@@ -9,7 +9,8 @@ async function webScraping(url, dayNum, selector) {
 
   const foods = [];
   for (const x of $(curDay).find('li')) {
-    if ($(x).text() !== '') {
+    curText = $(x).text().trim().replace('\n', '');
+    if (curText !== '') {
       foods.push($(x).text());
     }
   }
