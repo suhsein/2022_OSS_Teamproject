@@ -23,9 +23,12 @@ const square = require('./square');
 const Office = require('./Office');
 const schedule = require('./schedule'); // 학사일정 안내 모듈
 const getOfficeDict = require('./getOfficeDict');
+const OriginalOfficeDict = require('./OriginalOfficeDict');
+
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 const Comparestring = require('./Comparestring');
 
+const originalDict = OriginalOfficeDict();
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
 
@@ -35,7 +38,6 @@ let state = 0;
 // isNaN 오류 예외처리
 
 let rand;
-let feat4str;
 const spaceRegex = / /gi;
 
 rtm.on('message', (message) => {
@@ -48,7 +50,7 @@ rtm.on('message', (message) => {
     schedule(rtm, text, channel, scheduledict);
     state = 0; // 상태 초기화
   } else if (state === 4) {
-    feat4str = Comparestring(rtm, channel, dept);
+    Comparestring(rtm, channel, dept, officeDict, originalDict);
     state = 0;
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
@@ -66,6 +68,7 @@ rtm.on('message', (message) => {
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
         break;
       case '학과 안내':
+        Office(rtm, text, channel, officeDict);
         console.log('안내받고 싶은 학과를 영문으로 입력하세요');
         rtm.sendMessage('안내받고 싶은 학과를 영문으로 입력하세요', channel);
         state = 4;
