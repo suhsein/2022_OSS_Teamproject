@@ -39,13 +39,4 @@ describe('오늘의 메뉴 안내 및 평가 모듈 테스트', () => {
     assert.equal(res2, '주말 예외처리');
     done();
   });
-
-  describe('주간 식단 평가 결과 테스트', function () {
-    this.timeout(7000);
-    before(async () => res = await getWeekStar(rtm, channel));
-    it('Test - 주간 식단 평가', (done) => {
-      assert.equal(res, '이번주 메뉴 평가 성공');
-      done();
-    });
-  });
 });
