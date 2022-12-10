@@ -10,7 +10,7 @@ let output;
 let token;
 
 try {
-  token = fs.readFileSync('./testbot_token').toString('utf-8');
+  token = fs.readFileSync('../testbot_token').toString('utf-8');
 } catch (err) {
   console.error(err);
 }
