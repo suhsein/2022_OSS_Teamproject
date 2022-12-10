@@ -1,21 +1,5 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+const webScraping = require('./webScraping');
 /* eslint no-restricted-syntax:0 */ // for문 해당
-async function webScraping(url, dayNum, selector) {
-  const html = await axios.get(url);
-  const $ = cheerio.load(html.data);
-  const lunch = $(selector).first();
-  const curDay = $(lunch).find('td > ul').get(dayNum - 1);
-
-  const foods = [];
-  for (const x of $(curDay).find('li')) {
-    curText = $(x).text().trim().replace('\n', '');
-    if (curText !== '') {
-      foods.push(curText);
-    }
-  }
-  return foods;
-}
 
 const url = 'https://sobi.jbnu.ac.kr/menu/week_menu.php';
 const selector = 'table.tblType03 > tbody > tr';
@@ -29,7 +13,10 @@ const getWeekMenu = async function (rtm, channel) {
   let text = '';
 
   /* eslint-disable no-await-in-loop */
+  // 반복문 내에서 비동기 처리를 할 수 있도록 no-await-in-loop 해제
+
   for (const [index, value] of days.entries()) { //  월~금 이면
+    // for of 문으로 비동기 처리 가능하게 함
     star = 1;
     let good = 0;
     let bad = 0;
@@ -37,7 +24,7 @@ const getWeekMenu = async function (rtm, channel) {
     console.log(curMenu);
 
     curMenu.forEach((food) => { // 오늘의 메뉴 배열 -> 보낼 메세지 만들기
-      meat.some((m) => {
+      meat.some((m) => { // 반복문에서 조건 만족 시 break 할 수 있도록 some 사용
         if (food.includes(m)) {
           good += 1;
           return true;
