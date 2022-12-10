@@ -1,4 +1,4 @@
-const levenshtein = require('js-levenshtein');
+const levenshtein = require('../js-levenshtein');
 const getOfficeDict = require('./getOfficeDict');
 
 const officeDict = getOfficeDict();
@@ -26,7 +26,7 @@ const Comparestring = function (rtm, text, channel) {
   }
 
   rtm.sendMessage(`${lowercase}학과를 찾으시나요? ${lowercase}의 학과사무실 위치는 ${officeDict[retstr]}입니다`, channel);
-  console.log('학과 사무실 안내 성공');
+  console.log(`${lowercase}학과를 찾으시나요? ${lowercase}의 학과사무실 위치는 ${officeDict[retstr]}입니다`);
 
   return officeDict[retstr];
 };

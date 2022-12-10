@@ -1,10 +1,15 @@
 require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
+const { channel } = require('diagnostics_channel');
 
 const fs = require('fs');
-const Comparestring = require('./Comparestring');
-const greeting = require('./greeting');
+const Comparestring = require('./feature-4/Comparestring');
+const getScheduleDict = require('./feature-2/getScheduleDict');
+
+const scheduleDict = getScheduleDict();
+const greeting = require('./feature-1/greeting');
+const schedule = require('./feature-2/schedule');
 
 let status = 0;
 
@@ -17,15 +22,15 @@ try {
 }
 
 token = token.trim();
-// const testChannel = // 잠깐 공란
+const testchannel = 'C04B30ETYMV'; // 잠깐 공란
 
 rtm.start();
 
 rtm.on('ready', async () => {
-  const rdy1 = await rtm.sendMesssage('테스트를 시작한다.', test_channel);
+  const rdy1 = await rtm.sendMesssage('테스트를 시작한다.', testchannel);
   console.log('테스트 루틴 시작합니다');
   status += 1;
-  const rdy2 = await rtm.sendMesssage('hi', test_channel);
+  const rdy2 = await rtm.sendMesssage('hi', testchannel);
 });
 
 rtm.on('message', (message) => {
@@ -45,10 +50,16 @@ rtm.on('message', (message) => {
     }
   } // Feature/1
   status += 1; // Feature/2
+  if (status === 2) {
+    if (text === '학사 일정') {
+      schedule(rtm, text, channel, scheduleDict);
+    } else if (text === '9/1') {
+      schedule(rtm, text, channel, scheduleDict);
+    } else if (text === '9/5') {
+      schedule(rtm, text, channel, scheduleDict);
+    }
+  }
   status += 1;
-  // if (status === 3) {
-
-  // }
   status += 1;
   if (status === 4) {
     if (text === 'Computer Science and Engineering') {

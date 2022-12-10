@@ -23,7 +23,7 @@ rtm.start();
 /* eslint import/no-unresolved: ["off"] */
 /* eslint import/extensions: ["off"] */
 const assert = require('assert');
-const schedule = require('../schedule');
+const schedule = require('../feature-2/schedule');
 
 const testDict = {
   '9/1': [ '2학기 개강', '2학기 수강신청 변경 기간' ],

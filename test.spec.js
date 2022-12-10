@@ -24,7 +24,7 @@ const rtm = new RTMClient(token);
 })();
 
 const assert = require('assert');
-const greeting = require('./greeting');
+const greeting = require('./feature-1/greeting');
 
 let res;
 
