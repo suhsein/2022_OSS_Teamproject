@@ -25,10 +25,8 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install @slack/rtm-api dotenv
+        npm install
         npm install mocha -g
-        npm install axios
-        npm install cheerio
         mocha test/feature-3.spec.js
       env:
         CI: true
