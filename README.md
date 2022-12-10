@@ -72,7 +72,7 @@ repository를 clone 해오거나 zip을 다운받아 압축을 해제하여 작�
 
       git clone https://github.com/suhsein/2022_OSS_Teamproject.git
     
-npm install 하여 package.json 에 있는 의존성 패키지들을 설치하여 환경을 세팅합니다.<br>
+npm install 하여 package.json 에 있는 의존성 패키지들을 설치하여 환경을 세팅합니다. (필수!)<br>
 ⚠️개발에만 필요한 패키지인 devDependencies을 제외하고 싶다면 --production 플래그를 사용할 수 있습니다.
 - 모든 패키지 설치:
 
@@ -83,14 +83,7 @@ npm install 하여 package.json 에 있는 의존성 패키지들을 설치하�
 
       npm install --production  
       
- 단위 테스트 진행을 위해선 Node.js 테스트 프레임워크인 Mocha를 설치합니다.<br>
- - -g 옵션을 주면 패키지가 전역으로 설치되어 모든 프로젝트에 적용됩니다.
- 
-       sudo npm install mocha -g
- 
- - 또는, 해당 프로젝트에만 설치할 시엔
- 
-       npm install mocha --save-dev
+ 단위 테스트를 할 시엔 devDependencies 의 Mocha를 필수적으로 설치해야합니다.
       
 # 👬협업 컨벤션 세팅
 ESLint를 사용한 코드 컨벤션을 검사하였습니다.<br>
@@ -143,7 +136,6 @@ ESLint를 사용한 코드 컨벤션을 검사하였습니다.<br>
       
        vim .gitmessage.txt (커밋 템플릿 양식 넣기)
        git config --global commit.template .gitmessage.txt
-       
-# 🐥외부 리소스
-- Levenshtein distance 라이브러리: [gustf/js-levenshtein](https://github.com/gustf/js-levenshtein)
+      
+      
 
