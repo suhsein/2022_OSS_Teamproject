@@ -1,4 +1,4 @@
-const webScraping = require('./webScraping');
+const scrapingMenu = require('./scrapingMenu');
 /* eslint no-restricted-syntax:0 */ // for문 해당
 
 const url = 'https://sobi.jbnu.ac.kr/menu/week_menu.php';
@@ -20,7 +20,7 @@ const getWeekMenu = async function (rtm, channel) {
     star = 1;
     let good = 0;
     let bad = 0;
-    const curMenu = await webScraping(url, index, selector);
+    const curMenu = await scrapingMenu(url, index, selector);
     console.log(curMenu);
 
     curMenu.forEach((food) => { // 오늘의 메뉴 배열 -> 보낼 메세지 만들기

@@ -1,4 +1,4 @@
-const webScraping = require('./webScraping');
+const scrapingMenu = require('./scrapingMenu');
 /* eslint no-restricted-syntax:0 */ // for문 해당
 
 const url = 'https://sobi.jbnu.ac.kr/menu/week_menu.php';
@@ -14,7 +14,7 @@ const getTodayMenu = async function (rtm, dayNum, channel) {
   let bad = 0;
 
   if (dayNum >= 1 && dayNum <= 5) { //  월~금 이면
-    const curMenu = await webScraping(url, dayNum, selector);
+    const curMenu = await scrapingMenu(url, dayNum, selector);
     console.log(curMenu);
     let text = '';
 
