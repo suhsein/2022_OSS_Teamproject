@@ -101,7 +101,7 @@ rtm.on('message', (message) => {
         status = 3.2;
         break;
       case 3.2: // 주간 메뉴 평가 테스트
-        if (text !== '') {
+        if (text.includes('월') && text.includes('화') && text.includes('수') && text.includes('목') && text.includes('금')) {
           console.log('#3-2 주간 메뉴 평가 안내 테스트 성공');
         } else {
           console.log('#3-2 주간 메뉴 평가 안내 테스트 실패');
