@@ -53,6 +53,7 @@ rtm.on('message', (message) => {
   } else {
     switch (text) {
       case '테스트를 시작한다.':
+      case '테스트를 종료한다.':
         break;
       case 'hi':
       case 'Hi':
@@ -60,6 +61,7 @@ rtm.on('message', (message) => {
         greeting(rtm, channel, rand);
         break;
       case '학사일정':
+        schedule(rtm, text, channel, scheduledict);
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
         break;
       case '학과 안내':
@@ -67,8 +69,6 @@ rtm.on('message', (message) => {
         rtm.sendMessage('안내받고 싶은 학과를 영문으로 입력하세요', channel);
         state = 2;
         break;
-      default:
-        rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" 혹은 "학과 안내"를 입력하세요!', channel);
       case '오늘 밥 뭐야':
         dayNum = now.getDay();
         getTodayMenu(rtm, dayNum, channel);
