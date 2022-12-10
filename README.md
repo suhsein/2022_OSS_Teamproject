@@ -12,6 +12,9 @@
 <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat&logo=ESLint&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Mocha-8D6748?style=flat&logo=Mocha&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=flat&logo=GitHub Actions&logoColor=white"/>
+<br>
+<br>
+Node.js 버전: v18.12.1
 
 
 ## 챗봇 기능 소개
@@ -24,7 +27,7 @@
 
 ## 팀원 소개
 
-| **이혜인** | **이진형** | **서세인** |
+| **이혜인** | **서세인** | **이진형** |
 |:-----:|:-----:|:-----: |
  **Github**: [hyein0229](https://github.com/hyein0229) | **Github**: [suhsein](https://github.com/suhsein) | **Github**: [Jinnyzinny](https://github.com/Jinnyzinny) |
  <br>
