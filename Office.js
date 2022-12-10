@@ -10,8 +10,6 @@ const Office = function (rtm, text, channel) {
   console.log('학과 사무실을 안내합니다.');
   const feat4str = Comparestring(rtm, text, channel);
 
-  // rtm.sendMessage(rtm, `원하시는 학과가 ${feat4str} 인가요? 맞다면 y 틀리면 n을 입력해주세요`, channel);
-
   return feat4str;
 };
 

@@ -1,9 +1,7 @@
 const levenshtein = require('js-levenshtein');
 const getOfficeDict = require('./getOfficeDict');
-const OriginalOfficeDict = require('./getOriginalOfficeDict');
 
 const officeDict = getOfficeDict();
-const originalDict = OriginalOfficeDict();
 
 const Comparestring = function (rtm, text, channel) {
   const spaceRegex = / /gi;
@@ -11,7 +9,10 @@ const Comparestring = function (rtm, text, channel) {
 
   // OfficeDict에서 얻어온 Dictionary 형태의 배열을 입력 문자열하고 비교한다.
   const keys = Object.keys(officeDict);
-  const original = Object.keys(originalDict);
+  keys.forEach((key) => {
+    key.replace(spaceRegex, '').toLowerCase();
+  });
+  const original = Object.keys(officeDict);
   let lowercase;
   let minimum = Infinity;
   for (let i = 0; i < keys.length; i += 1) {
