@@ -5,7 +5,7 @@ const evaluteMenu = require('./evaluateMenu');
 const stars = ['★☆☆', '★★☆', '★★★'];
 
 const getTodayMenu = async function (rtm, dayNum, channel) {
-  console.log('오늘의 메뉴를 안내합니다.');
+  console.log('오늘의 메뉴 및 평가를 안내합니다.');
 
   if (dayNum >= 1 && dayNum <= 5) { //  월~금 이면
     const curMenu = await scrapingMenu(dayNum);
