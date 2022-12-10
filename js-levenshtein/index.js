@@ -1,38 +1,36 @@
-'use strict';
-module.exports = (function()
-{
-  function _min(d0, d1, d2, bx, ay)
-  {
+/* eslint-disable */ 
+
+module.exports = (function () {
+  function _min(d0, d1, d2, bx, ay) {
     return d0 < d1 || d2 < d1
-        ? d0 > d2
-            ? d2 + 1
-            : d0 + 1
-        : bx === ay
-            ? d1
-            : d1 + 1;
+      ? d0 > d2
+        ? d2 + 1
+        : d0 + 1
+      : bx === ay
+        ? d1
+        : d1 + 1;
   }
 
-  return function(a, b)
-  {
+  return function (a, b) {
     if (a === b) {
       return 0;
     }
 
     if (a.length > b.length) {
-      var tmp = a;
+      const tmp = a;
       a = b;
       b = tmp;
     }
 
-    var la = a.length;
-    var lb = b.length;
+    let la = a.length;
+    let lb = b.length;
 
     while (la > 0 && (a.charCodeAt(la - 1) === b.charCodeAt(lb - 1))) {
       la--;
       lb--;
     }
 
-    var offset = 0;
+    let offset = 0;
 
     while (offset < la && (a.charCodeAt(offset) === b.charCodeAt(offset))) {
       offset++;
@@ -45,28 +43,28 @@ module.exports = (function()
       return lb;
     }
 
-    var x = 0;
-    var y;
-    var d0;
-    var d1;
-    var d2;
-    var d3;
-    var dd;
-    var dy;
-    var ay;
-    var bx0;
-    var bx1;
-    var bx2;
-    var bx3;
+    let x = 0;
+    let y;
+    let d0;
+    let d1;
+    let d2;
+    let d3;
+    let dd;
+    let dy;
+    let ay;
+    let bx0;
+    let bx1;
+    let bx2;
+    let bx3;
 
-    var vector = [];
+    const vector = [];
 
     for (y = 0; y < la; y++) {
       vector.push(y + 1);
       vector.push(a.charCodeAt(offset + y));
     }
 
-    var len = vector.length - 1;
+    const len = vector.length - 1;
 
     for (; x < lb - 3;) {
       bx0 = b.charCodeAt(offset + (d0 = x));
@@ -101,5 +99,4 @@ module.exports = (function()
 
     return dd;
   };
-})();
-
+}());

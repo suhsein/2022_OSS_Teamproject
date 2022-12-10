@@ -1,123 +1,120 @@
-'use strict';
+/* eslint-disable */ 
 const levenshteinEditDistance = require('levenshtein-edit-distance');
 const fastLevenshtein = require('fast-levenshtein').get;
 const talisman = require('talisman/metrics/distance/levenshtein');
 const leven = require('leven');
-const levenshtein = require('./');
+const levenshtein = require('.');
 
-function wordBench(fn)
-{
-  for (var i = 0; i + 1 < words.length; i += 2) {
-    var w1 = words[i];
-    var w2 = words[i + 1];
+function wordBench(fn) {
+  for (let i = 0; i + 1 < words.length; i += 2) {
+    const w1 = words[i];
+    const w2 = words[i + 1];
     fn(w1, w2);
   }
 }
 
-function sentenceBench(fn)
-{
-  for (var i = 0; i + 1 < sentences.length; i += 2) {
-    var s1 = sentences[i];
-    var s2 = sentences[i + 1];
+function sentenceBench(fn) {
+  for (let i = 0; i + 1 < sentences.length; i += 2) {
+    const s1 = sentences[i];
+    const s2 = sentences[i + 1];
     fn(s1, s2);
   }
 }
 
-function paragraphBench(fn)
-{
-  for (var i = 0; i + 1 < paragraphs.length; i += 2) {
-    var p1 = paragraphs[i];
-    var p2 = paragraphs[i + 1];
+function paragraphBench(fn) {
+  for (let i = 0; i + 1 < paragraphs.length; i += 2) {
+    const p1 = paragraphs[i];
+    const p2 = paragraphs[i + 1];
     fn(p1, p2);
   }
 }
 
-suite('50 paragraphs, length max=500 min=240 avr=372.5', function() {
-  before(function() {
+suite('50 paragraphs, length max=500 min=240 avr=372.5', () => {
+  before(() => {
     // warmup
-    var _t = 0;
-    for (var i = 0; i < paragraphs.length; i++) {
+    let _t = 0;
+    for (let i = 0; i < paragraphs.length; i++) {
       _t += paragraphs[i].toLowerCase().length;
     }
   });
 
-  bench('js-levenshtein', function() {
+  bench('js-levenshtein', () => {
     paragraphBench(levenshtein);
   });
 
-  bench('talisman', function() {
+  bench('talisman', () => {
     paragraphBench(talisman);
   });
 
-  bench('levenshtein-edit-distance', function() {
+  bench('levenshtein-edit-distance', () => {
     paragraphBench(levenshteinEditDistance);
   });
 
-  bench('leven', function() {
+  bench('leven', () => {
     paragraphBench(leven);
   });
 
-  bench('fast-levenshtein', function() {
+  bench('fast-levenshtein', () => {
     paragraphBench(fastLevenshtein);
   });
 });
 
-suite('100 sentences, length max=170 min=6 avr=57.5', function() {
-  before(function() {
+suite('100 sentences, length max=170 min=6 avr=57.5', () => {
+  before(() => {
     // warmup
-    var _t = 0;
-    for (var i = 0; i < sentences.length; i++) {
+    let _t = 0;
+    for (let i = 0; i < sentences.length; i++) {
       _t += sentences[i].toLowerCase().length;
     }
   });
 
-  bench('js-levenshtein', function() {
+  bench('js-levenshtein', () => {
     sentenceBench(levenshtein);
   });
 
-  bench('talisman', function() {
+  bench('talisman', () => {
     sentenceBench(talisman);
   });
 
-  bench('levenshtein-edit-distance', function() {
+  bench('levenshtein-edit-distance', () => {
     sentenceBench(levenshteinEditDistance);
   });
 
-  bench('leven', function() {
+  bench('leven', () => {
     sentenceBench(leven);
   });
 
-  bench('fast-levenshtein', function() {
+  bench('fast-levenshtein', () => {
     sentenceBench(fastLevenshtein);
   });
 });
 
-suite('2000 words, length max=20 min=3 avr=9.5', function() {
-  before(function() {
+suite('2000 words, length max=20 min=3 avr=9.5', () => {
+  before(() => {
     // warmup
-    var _t = 0;
-    for (var i = 0; i < words.length; i++) {
+    let _t = 0;
+    for (let i = 0; i < words.length; i++) {
       _t += words[i].toLowerCase().length;
     }
   });
 
-  bench('js-levenshtein', function() {
+  bench('js-levenshtein', () => {
     wordBench(levenshtein);
   });
 
-  bench('talisman', function() {
+  bench('talisman', () => {
     wordBench(talisman);
   });
 
-  bench('levenshtein-edit-distance', function() {
+  bench('levenshtein-edit-distance', () => {
     wordBench(levenshteinEditDistance);
   });
 
-  bench('leven', function() {
+  bench('leven', () => {
     wordBench(leven);
   });
 
-  bench('fast-levenshtein', function() {
+  bench('fast-levenshtein', () => {
     wordBench(fastLevenshtein);
   });
 });
