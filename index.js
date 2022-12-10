@@ -29,7 +29,6 @@ const getWeekMenu = require('./getWeekMenu');
 
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
-const now = new Date();
 
 let state = 0;
 
