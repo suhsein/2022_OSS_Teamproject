@@ -1,4 +1,4 @@
-const levenshtein = require('./js-levenshtein');
+const levenshtein = require('js-levenshtein');
 
 const Comparestring = function (text, officeDict) {
   const spaceRegex = / /gi;
