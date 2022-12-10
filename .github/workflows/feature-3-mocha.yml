@@ -27,6 +27,6 @@ jobs:
       run: |
         npm install
         npm install mocha -g
-        mocha test/feature-3.spec.js
+        mocha --timeout 10000 test/feature-3.spec.js
       env:
         CI: true
