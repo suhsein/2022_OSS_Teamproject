@@ -26,6 +26,21 @@ const getTodayMenu = require('./getTodayMenu');
 const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 const getWeekStar = require('./getWeekStar');
+const scrapingMenu = require('./scrapingMenu');
+const evaluateMenu = require('./evaluateMenu');
+
+global.menuDict = {};
+/* eslint no-await-in-loop: ["off"] */
+const getMenuDict = function () {
+  (async () => {
+    for (let i = 0; i < 5; i += 1) {
+      const menu = await scrapingMenu(i + 1);
+      const star = evaluateMenu(menu);
+      global.menuDict[menu] = star;
+    }
+  })();
+};
+getMenuDict();
 
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
@@ -53,6 +68,7 @@ rtm.on('message', (message) => {
   } else {
     switch (text) {
       case '테스트를 시작한다.':
+      case '테스트를 종료한다.':
         break;
       case 'hi':
       case 'Hi':
@@ -60,6 +76,7 @@ rtm.on('message', (message) => {
         greeting(rtm, channel, rand);
         break;
       case '학사일정':
+        schedule(rtm, text, channel, scheduledict);
         state = 1; // 학사일정을 입력하면 날짜를 입력받을 수 있는 state 바뀜
         break;
       case '학과 안내':
@@ -67,14 +84,12 @@ rtm.on('message', (message) => {
         rtm.sendMessage('안내받고 싶은 학과를 영문으로 입력하세요', channel);
         state = 2;
         break;
-      default:
-        rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" 혹은 "학과 안내"를 입력하세요!', channel);
       case '오늘 밥 뭐야':
         dayNum = now.getDay();
-        getTodayMenu(rtm, dayNum, channel);
+        getTodayMenu(rtm, dayNum, menuDict, channel);
         break;
       case '이번주 뭐 나와':
-        getWeekStar(rtm, channel);
+        getWeekStar(rtm, menuDict, channel);
         break;
       default:
         rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" / "이번주 뭐 나와" 혹은 "학과 안내"를 입력하세요!', channel);
