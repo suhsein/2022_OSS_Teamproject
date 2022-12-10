@@ -45,6 +45,8 @@ rtm.on('ready', async () => {
   console.log('#1 랜덤 인사 테스트 시작');
 });
 
+let count = 0;
+
 rtm.on('message', (message) => {
   const { text } = message;
 
@@ -55,14 +57,22 @@ rtm.on('message', (message) => {
       case 1: //  랜덤 인사 테스트
         if (test1.includes(text)) {
           console.log('#1 랜덤 인사 테스트 성공');
+          count += 1;
         } else {
           console.log('#1 랜덤 인사 테스트 실패');
           process.exit(1);
         }
-        rtm.sendMessage('학사일정', test_channel);
-        console.log('#2 학사일정 안내 테스트 시작');
-        status = 2;
-        subStatus = 1;
+
+        if (count === 4) {
+          rtm.sendMessage('학사일정', test_channel);
+          console.log('#2 학사일정 안내 테스트 시작');
+          status = 2;
+          subStatus = 1;
+        } else if (count >= 2) {
+          rtm.sendMessage('Hi', test_channel);
+        } else {
+          rtm.sendMessage('hi', test_channel);
+        }
         break;
       case 2: // 학사일정 안내 테스트
         if (text === '안내 받을 날짜를 이야기해주세요. (예, 12/21)') {
