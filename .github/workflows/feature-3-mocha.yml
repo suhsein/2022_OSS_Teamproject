@@ -1,8 +1,10 @@
-name: feature-1 mocha test
+name: feature-3 mocha test
 
 on:
   pull_request:
     branches: [Develop]
+  push:
+    branches: [feature/3]
 
 jobs:
   build:
@@ -25,6 +27,6 @@ jobs:
       run: |
         npm install
         npm install mocha -g
-        mocha test/feature-1.spec.js
+        mocha --timeout 10000 test/feature-3.spec.js
       env:
         CI: true
