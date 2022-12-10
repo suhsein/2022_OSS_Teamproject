@@ -1,4 +1,4 @@
-const levenshtein = require('../js-levenshtein');
+const levenshtein = require('./js-levenshtein');
 const getOfficeDict = require('./getOfficeDict');
 
 const officeDict = getOfficeDict();
