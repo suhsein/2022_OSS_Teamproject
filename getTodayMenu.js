@@ -1,30 +1,10 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-/* eslint no-restricted-syntax:0 */ // for문 해당
-async function webScraping(url, dayNum, selector) {
-  const html = await axios.get(url);
-  const $ = cheerio.load(html.data);
-  const lunch = $(selector).first();
-  const curDay = $(lunch).find('td > ul').get(dayNum - 1);
-
-  const foods = [];
-  for (const x of $(curDay).find('li')) {
-    curText = $(x).text().trim().replace('\n', '');
-    if (curText !== '') {
-      foods.push(curText);
-    }
-  }
-  return foods;
-}
-
-const url = 'https://sobi.jbnu.ac.kr/menu/week_menu.php';
-const selector = 'table.tblType03 > tbody > tr';
+const scrapingMenu = require('./scrapingMenu');
 
 const getTodayMenu = async function (rtm, dayNum, channel) {
   console.log('오늘의 메뉴를 안내합니다.');
 
   if (dayNum >= 1 && dayNum <= 5) { //  월~금 이면
-    const curMenu = await webScraping(url, dayNum, selector);
+    const curMenu = await scrapingMenu(dayNum);
     console.log(curMenu);
     let text = '';
 
