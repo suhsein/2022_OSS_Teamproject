@@ -1,24 +1,23 @@
-const scrapingMenu = require('./scrapingMenu');
-const evaluteMenu = require('./evaluateMenu');
 /* eslint no-restricted-syntax:0 */ // for문 해당
 
 const stars = ['★☆☆', '★★☆', '★★★'];
 
-const getTodayMenu = async function (rtm, dayNum, channel) {
+const getTodayMenu = async function (rtm, dayNum, menuDict, channel) {
   console.log('오늘의 메뉴 및 평가를 안내합니다.');
 
   if (dayNum >= 1 && dayNum <= 5) { //  월~금 이면
-    const curMenu = await scrapingMenu(dayNum);
+    const curMenu = Object.keys(menuDict)[dayNum - 1];
+    const foodList = curMenu.split(',');
     let text = '';
 
-    curMenu.forEach((food) => { // 오늘의 메뉴 배열 -> 보낼 메세지 만들기
+    foodList.forEach((food) => { // 오늘의 메뉴 배열 -> 보낼 메세지 만들기
       if (text === '') {
         text += food;
       } else {
         text += `, ${food}`;
       }
     });
-    const star = evaluteMenu(curMenu);
+    const star = menuDict[curMenu];
 
     rtm.sendMessage(`${text} 입니다. \n 별점 : ${stars[star - 1]}`, channel);
     return '오늘의 식단메뉴 안내와 평가 성공';

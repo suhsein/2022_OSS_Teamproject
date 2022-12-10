@@ -10,7 +10,7 @@ let output;
 let token;
 
 try {
-  token = fs.readFileSync('./testbot_token').toString('utf-8');
+  token = fs.readFileSync('../testbot_token').toString('utf-8');
 } catch (err) {
   console.error(err);
 }
@@ -33,7 +33,7 @@ const test2 = {
 const test4 = {
   'Mechanical Engineering': 'College of Engineering Building 4, 212',
   'ComPuterscience and ENGIneering': 'College of Engineering Building 7, 224',
-  'Electric Engineering': 'Electronic Engineering 학과를 찾으시나요?\nElectronic Engineering 의 학과사무실 위치는 College of Engineering Building 7, 224 입니다',
+  'Electric Engineering': 'Electronic Engineering',
 };
 
 rtm.on('ready', async () => {
@@ -45,6 +45,8 @@ rtm.on('ready', async () => {
   console.log('#1 랜덤 인사 테스트 시작');
 });
 
+let count = 0;
+
 rtm.on('message', (message) => {
   const { text } = message;
 
@@ -55,14 +57,22 @@ rtm.on('message', (message) => {
       case 1: //  랜덤 인사 테스트
         if (test1.includes(text)) {
           console.log('#1 랜덤 인사 테스트 성공');
+          count += 1;
         } else {
           console.log('#1 랜덤 인사 테스트 실패');
           process.exit(1);
         }
-        rtm.sendMessage('학사일정', test_channel);
-        console.log('#2 학사일정 안내 테스트 시작');
-        status = 2;
-        subStatus = 1;
+
+        if (count === 4) {
+          rtm.sendMessage('학사일정', test_channel);
+          console.log('#2 학사일정 안내 테스트 시작');
+          status = 2;
+          subStatus = 1;
+        } else if (count >= 2) {
+          rtm.sendMessage('Hi', test_channel);
+        } else {
+          rtm.sendMessage('hi', test_channel);
+        }
         break;
       case 2: // 학사일정 안내 테스트
         if (text === '안내 받을 날짜를 이야기해주세요. (예, 12/21)') {
@@ -90,7 +100,7 @@ rtm.on('message', (message) => {
         }
         break;
       case 3.1: // 식단 안내 테스트
-        if (text.includes('입니다')) {
+        if (text.includes('별점:') || text.includes('식단이 없습니다.')) {
           console.log('#3-1 식단 안내 테스트 성공');
         } else {
           console.log('#3-1 식단 안내 테스트 실패');
@@ -107,13 +117,13 @@ rtm.on('message', (message) => {
           console.log('#3-2 주간 메뉴 평가 안내 테스트 실패');
           process.exit(1);
         }
-        rtm.sendMessage('학과 사무실', test_channel);
+        rtm.sendMessage('학과 안내', test_channel);
         console.log('#4 학과 사무실 안내 테스트 시작');
         status = 4;
         subStatus = 1;
         break;
       case 4: // 학과사무실 안내 테스트
-        if (text === '학과 이름을 입력해주세요.') {
+        if (text === '안내받고 싶은 학과를 영문으로 입력하세요') {
           console.log('#4 학과 사무실 입력시 학과 이름 입력 받기');
           input = Object.keys(test4)[subStatus - 1];
           rtm.sendMessage(input, test_channel); // 현재 테스트의 input 보내기
@@ -121,7 +131,7 @@ rtm.on('message', (message) => {
         }
 
         output = test4[input];
-        if (text === output) {
+        if (text === output || (subStatus === 3 && text.includes(output))) {
           console.log(`#4-${subStatus} 학과 사무실 안내 테스트 성공`);
 
           if (subStatus === Object.keys(test4).length) { // 마지막 서브테스트까지 완료하였으면
@@ -130,7 +140,7 @@ rtm.on('message', (message) => {
             status = -1;
           } else {
             subStatus += 1;
-            rtm.sendMessage('학과 사무실', test_channel); // #2 의 다음 서브테스트 진행
+            rtm.sendMessage('학과 안내', test_channel); // #2 의 다음 서브테스트 진행
           }
         } else {
           console.log(`#4-${subStatus} 학과 사무실 안내 테스트 실패`);
