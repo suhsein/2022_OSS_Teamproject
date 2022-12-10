@@ -25,7 +25,7 @@ const schedule = require('./schedule'); // 학사일정 안내 모듈
 const getTodayMenu = require('./getTodayMenu');
 const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
-const getWeekMenu = require('./getWeekMenu');
+const getWeekStar = require('./getWeekStar');
 
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
@@ -34,7 +34,8 @@ let state = 0;
 
 /* eslint no-restricted-globals: ["off"] */
 // isNaN 오류 예외처리
-
+const now = new Date();
+let dayNum;
 let rand;
 const spaceRegex = / /gi;
 
@@ -69,7 +70,7 @@ rtm.on('message', (message) => {
         getTodayMenu(rtm, dayNum, channel);
         break;
       case '이번주 뭐 나와':
-        getWeekMenu(rtm, channel);
+        getWeekStar(rtm, channel);
         break;
       default:
         rtm.sendMessage('"hi" / "학사일정" / "오늘 밥 뭐야" / "이번주 뭐 나와" 혹은 "학과 안내"를 입력하세요!', channel);
