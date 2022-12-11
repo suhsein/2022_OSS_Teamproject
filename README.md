@@ -66,7 +66,7 @@ Node.js 버전: v18.12.1
 <br>
 
 
-# 🛠프로젝트 세팅 방법
+# 🛠프로젝트 시작 방법
 repository를 clone 해오거나 zip을 다운받아 압축을 해제하여 작업공간에 코드를 가져옵니다.<br>
 - clone 방법:
 
@@ -83,7 +83,21 @@ npm install 하여 package.json 에 있는 의존성 패키지들을 설치하�
 
       npm install --production  
       
- 단위 테스트를 할 시엔 devDependencies 의 Mocha를 필수적으로 설치해야합니다.
+ 
+ dependencies: 어플 동작에 필수적인 패키지
+- @slack/rtm-api
+- axios
+- cheerio
+- dotenv
+- js-levenshtein<br>
+
+devDependencies: 개발 보조 패키지
+- eslint*: Lint 검사
+- husky: hook 에 사용
+- mocha: Node.js 테스트 프레임워크, 단위테스트에 필요
+ 
+<br>
+ 
       
 # 👬협업 컨벤션 세팅
 ESLint를 사용한 코드 컨벤션을 검사하였습니다.<br>
@@ -136,6 +150,10 @@ ESLint를 사용한 코드 컨벤션을 검사하였습니다.<br>
       
        vim .gitmessage.txt (커밋 템플릿 양식 넣기)
        git config --global commit.template .gitmessage.txt
+       
+       
+
+     
       
       
 
