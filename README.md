@@ -152,6 +152,10 @@ ESLint를 사용한 코드 컨벤션을 검사하였습니다.<br>
        git config --global commit.template .gitmessage.txt
        
        
+# 💬라이센스
+- MIT License
+       
+       
 
      
       
