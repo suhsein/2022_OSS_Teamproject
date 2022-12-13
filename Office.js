@@ -21,9 +21,14 @@ const Office = function (rtm, text, channel, dict) {
   }
   // 유사한 학과 찾기
   const similarMajor = Comparestring(text, dict);
-  rtm.sendMessage(`${similarMajor} 학과를 찾으시나요?\n${similarMajor} 의 학과사무실 위치는 ${dict[similarMajor]} 입니다`, channel);
-  console.log('유사한 학과 안내 성공');
-  return '유사학 학과 찾아서 안내 성공';
+  if (similarMajor !== '') {
+    rtm.sendMessage(`${similarMajor} 학과를 찾으시나요?\n${similarMajor} 의 학과사무실 위치는 ${dict[similarMajor]} 입니다`, channel);
+    console.log('유사한 학과 안내 성공');
+    return '유사학 학과 찾아서 안내 성공';
+  }
+  rtm.sendMessage('해당 학과가 없습니다.', channel);
+  console.log('잘못된 학과 입력');
+  return '잘못된 학과 입력';
 };
 
 module.exports = Office;

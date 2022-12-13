@@ -16,7 +16,10 @@ const Comparestring = function (text, officeDict) {
       lowercase = keys[i];
     }
   }
-  return lowercase;
+  if (minimum <= 6) {
+    return lowercase;
+  }
+  return '';
 };
 
 module.exports = Comparestring;
