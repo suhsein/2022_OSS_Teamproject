@@ -15,17 +15,6 @@ try {
 
 console.log(token);
 
-const rtm = new RTMClient(token);
-rtm.start();
-
-const greeting = require('./greeting');
-const square = require('./square');
-const Office = require('./Office');
-const schedule = require('./schedule'); // 학사일정 안내 모듈
-const getTodayMenu = require('./getTodayMenu');
-const getOfficeDict = require('./getOfficeDict');
-const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
-const getWeekStar = require('./getWeekStar');
 const scrapingMenu = require('./scrapingMenu');
 const evaluateMenu = require('./evaluateMenu');
 
@@ -42,6 +31,15 @@ const getMenuDict = function () {
 };
 getMenuDict();
 
+const greeting = require('./greeting');
+const square = require('./square');
+const Office = require('./Office');
+const schedule = require('./schedule'); // 학사일정 안내 모듈
+const getTodayMenu = require('./getTodayMenu');
+const getOfficeDict = require('./getOfficeDict');
+const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
+const getWeekStar = require('./getWeekStar');
+
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
 
@@ -49,6 +47,10 @@ let state = 0;
 
 /* eslint no-restricted-globals: ["off"] */
 // isNaN 오류 예외처리
+
+const rtm = new RTMClient(token);
+rtm.start();
+
 const now = new Date();
 let dayNum;
 let rand;
