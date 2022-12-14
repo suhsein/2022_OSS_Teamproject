@@ -34,6 +34,7 @@ const test4 = {
   'Mechanical Engineering': 'College of Engineering Building 4, 212',
   'ComPuterscience and ENGIneering': 'College of Engineering Building 7, 224',
   'Electric Engineering': 'Electronic Engineering',
+  English: '해당 학과가 없습니다.',
 };
 
 rtm.on('ready', async () => {
@@ -100,7 +101,7 @@ rtm.on('message', (message) => {
         }
         break;
       case 3.1: // 식단 안내 테스트
-        if (text.includes('별점:') || text.includes('식단이 없습니다.')) {
+        if (text.includes('별점 :') || text.includes('식단이 없습니다.')) {
           console.log('#3-1 식단 안내 테스트 성공');
         } else {
           console.log('#3-1 식단 안내 테스트 실패');
