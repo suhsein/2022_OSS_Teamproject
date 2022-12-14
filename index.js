@@ -15,22 +15,7 @@ try {
 
 console.log(token);
 
-const scrapingMenu = require('./scrapingMenu');
-const evaluateMenu = require('./evaluateMenu');
-
 global.menuDict = {};
-/* eslint no-await-in-loop: ["off"] */
-const getMenuDict = function () {
-  (async () => {
-    for (let i = 0; i < 5; i += 1) {
-      const menu = await scrapingMenu(i + 1);
-      const star = evaluateMenu(menu);
-      global.menuDict[menu] = star;
-    }
-  })();
-};
-getMenuDict();
-
 const greeting = require('./greeting');
 const square = require('./square');
 const Office = require('./Office');
@@ -39,6 +24,7 @@ const getTodayMenu = require('./getTodayMenu');
 const getOfficeDict = require('./getOfficeDict');
 const getScheduleDict = require('./getScheduleDict'); // 학사일정 딕셔너리 생성 모듈. 학사일정 안내 시 매번 for문을 돌지 않도록 함.
 const getWeekStar = require('./getWeekStar');
+const ScrapingMenu = require('./ScrapingMenu');
 
 const officeDict = getOfficeDict();
 const scheduledict = getScheduleDict(); // 학사일정 딕셔너리 가져오기
